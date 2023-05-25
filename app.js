@@ -8,8 +8,9 @@ const data = await response.json();
 const mustIncludeTags = ["dangerous", "draconic", "fringe-world", "normal G", "rich"];
 const cantIncludeTags = ["aquatic", "frozen", "low G", "high G", "poor", "quarantined"];
 
-const ourPlanet =  data.forEach((planet) => {
-   mustIncludeTags.filter((tag) => mustIncludeTags.includes(tag))
-});
+// MEIE NÄITE PUHUL:
+// 'every' kontrollib, kas KÕIK arrays olevad itemid on listis olemas
+// 'some' kontrollib, kas vähemalt üks juba on olemas ja kui on, siis on vale.
+const ourPlanet =  data.filter((planet) => mustIncludeTags.every((tag) => planet.tags.includes(tag)) && !cantIncludeTags.some((tag) => planet.tags.includes(tag)));
 
 console.log(ourPlanet);
